@@ -1,0 +1,14 @@
+---
+oracle_version: { majeur: "12", mineur: '1' }
+postgres_user: "vagrant"
+postgres_password: "vagrant"
+postgres_database: "test_vagrant"
+oracle_user: ""
+oracle_password: ""
+oracle_database: ""
+oracle_url: ""
+ansible_become_pass: "vagrant" # le pass sudo ici le pass de l'utilisateur vagrant pour vagrant
+oracle_client_local_oracle_zip_files_dir: "/opt"
+oracle_client_base: /opt
+user: "vagrant"
+virtualenv_name: "env_duckins"

@@ -1,0 +1,5 @@
+---
+- name: Restart PostgreSQL
+  command: service postgresql restart
+  become: yes
+  become_method: sudo

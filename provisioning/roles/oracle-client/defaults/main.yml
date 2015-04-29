@@ -1,0 +1,12 @@
+---
+# defaults file for oracle-client
+
+# installation base directory
+oracle_client_base: /opt
+
+oracle_client_local_oracle_zip_files_dir: "/opt"
+
+# set to false if you don't want to install cx_Oracle
+oracle_client_install_cx_oracle: true
+
+oracle_version: { majeur: "12", mineur: '1' }

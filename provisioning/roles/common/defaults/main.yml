@@ -1,0 +1,28 @@
+---
+user: "vagrant"
+virtualenv_name: "env_duckins"
+django_version: "1.8"
+
+pip_modules:
+  - django=={{ django_version }}
+  - django-registration-redux
+  - django-floppyforms
+  - django_xworkflows
+  - django-autocomplete-light
+  - django-wkhtmltopdf
+  - xhtml2pdf
+  - django-mailrobot
+  - openpyxl
+  - factory_boy
+  - django-debug-toolbar
+  - django-devserver
+  - psycopg2
+  - django-compressor
+  - django-simple-captcha
+  - django-extensions
+  - django-crispy-forms
+  - django_extra_views
+  - django-ckeditor
+  - cx_oracle
+  - django-reversion
+  - djangorestframework

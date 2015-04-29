@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: vagrant
+  roles:
+    - { role: "oracle-client" }
+    - { role: "common" }
+    - { role: "postgresl" }
+
+
+

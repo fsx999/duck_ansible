@@ -1,0 +1,49 @@
+---
+# This role conains tasks to deploy the Oracle Instant Client
+
+- name: installation unzip
+  apt: name=unzip state=present
+  become: yes
+  become_method: sudo
+
+- name: installation files check
+  shell: ls /opt/instantclient-*.zip
+  connection: local
+  sudo: false
+  register: ls_inst_files
+  changed_when: false
+  tags: check
+
+- name: installation files missing
+  fail: msg="Oracle Instant Client installation files missing"
+  when: ls_inst_files.stdout == ""
+  tags: check
+
+- name: installing oracle client
+  unarchive: src={{ item }} dest={{ oracle_client_base }}
+  become: yes
+  become_method: sudo
+  with_items: ls_inst_files.stdout_lines
+  tags: install
+
+- name: obtaining installation directory
+  shell: ls -d {{ oracle_client_base }}/instantclient_1[012]_*
+  register: ls_oracle_home
+  changed_when: false
+  tags: install
+
+- name: link instant client
+  file: src={{ ls_oracle_home.stdout }}/{{ item.path }} dest={{ ls_oracle_home.stdout }}/{{ item.dest }} state=link
+  become: yes
+  become_method: sudo
+  with_items:
+    - { path: 'libclntsh.so.{{ oracle_version.majeur }}.{{ oracle_version.mineur }}', dest: 'libclntsh.so' }
+    - { path: 'libocci.so.{{ oracle_version.majeur }}.{{ oracle_version.mineur }}', dest: 'libocci.so' }
+    - { path: 'libclntshcore.so.{{ oracle_version.majeur }}.{{ oracle_version.mineur }}', dest: 'libclntshcore.so.' }
+
+
+- name: variable oracle
+  lineinfile: dest=/home/{{user}}/.bashrc line="{{ item }}"
+  with_items:
+    - "export ORACLE_HOME={{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"
+    - "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME"

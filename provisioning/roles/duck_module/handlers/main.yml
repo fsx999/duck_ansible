@@ -1,0 +1,5 @@
+---
+# handlers file for duck_module
+- name: install duck_eggs
+  pip: name="{{ansible_env.HOME}}/{{ project_name }}/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv_name }}"
+  with_items: duck_module

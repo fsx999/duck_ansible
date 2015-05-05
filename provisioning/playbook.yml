@@ -3,7 +3,7 @@
   remote_user: vagrant
   roles:
 #    - { role: "oracle-client" }
-#    - { role: "common" }
+    - { role: "common" }
 #    - { role: "postgresl" }
     - { role: "duck_module" }
 

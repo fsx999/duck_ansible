@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+__author__ = 'paul'
+from fabric.api import local, env, run, roles
+from fabric.operations import get
+from fabric.context_managers import prefix
+
+
+env.roledefs = {
+    'prod': ['{{ prod_host }}']
+}
+
+
+@roles('prod')
+def backup_duck_duck():
+    run("pg_dump -h {{ postgres_host_prod }} -U {{ postgres_user_prod }}  -Fc -f duck.dump --encoding='UTF8' {{ postgres_database_prod }}")
+    get("duck.dump", 'duck.dump')
+    local("pg_restore -d {{ postgres_database }} -U {{ postgres_user }} -O -c -x -h {{ postgres_host }} duck.dump")
+    local('rm duck.dump')
+

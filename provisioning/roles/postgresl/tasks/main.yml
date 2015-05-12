@@ -7,6 +7,12 @@
   notify:
     - Restart PostgreSQL
 
+- name: Copy valid postgres.conf
+  template: src=postgres.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
+  become: yes
+  become_method: sudo
+  notify:
+    - Restart PostgreSQL
 
 - name: Postgres installation database
   become: yes
@@ -19,4 +25,4 @@
   become: yes
   become_user: postgres
   become_method: sudo
-  postgresql_user: name={{ postgres_user }} db={{ postgres_database }} password={{ postgres_password }} role_attr_flags=SUPERUSER
+  postgresql_user: name={{ postgres_user }} db={{ postgres_database }} password={{ postgres_password_crypt }} role_attr_flags=SUPERUSER

@@ -32,4 +32,5 @@ pip_modules:
 #  - django_mptt_admin
 #  - django-macaddress
 #  - django-markdown-deux
-  - django-helpdesk
+#  - django-helpdesk
+  - xlwt

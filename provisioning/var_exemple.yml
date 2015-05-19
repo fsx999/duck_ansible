@@ -11,4 +11,4 @@ ansible_become_pass: "vagrant" # le pass sudo ici le pass de l'utilisateur vagra
 oracle_client_local_oracle_zip_files_dir: "/opt"
 oracle_client_base: /opt
 user: "vagrant"
-virtualenv_name: "env_duckins"
+virtualenv_name: "env_duckins"d

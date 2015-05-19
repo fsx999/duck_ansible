@@ -1,29 +1,29 @@
 ---
-#- name: Setup base tools
-#  apt: name={{ item }} state=present
-#  become: yes
-#  become_method: sudo
-#  with_items:
-#    - vim
-#    - git
-#    - mercurial
-#    - python-setuptools
-#    - python-dev
-#    - postgresql
-#    - libpq-dev
-#    - unzip
-#    - libaio1
-#    - python-psycopg2
-#
-#- name: install pip
-#  easy_install: name=pip
-#  become: yes
-#  become_method: sudo
-#
-#- name: install virtualenv
-#  pip: name=virtualenv
-#  become: yes
-#  become_method: sudo
+- name: Setup base tools
+  apt: name={{ item }} state=present
+  become: yes
+  become_method: sudo
+  with_items:
+    - vim
+    - git
+    - mercurial
+    - python-setuptools
+    - python-dev
+    - postgresql
+    - libpq-dev
+    - unzip
+    - libaio1
+    - python-psycopg2
+
+- name: install pip
+  easy_install: name=pip
+  become: yes
+  become_method: sudo
+
+- name: install virtualenv
+  pip: name=virtualenv
+  become: yes
+  become_method: sudo
 
 
 - name: install les paquets pip
@@ -33,3 +33,7 @@
     ORACLE_HOME: "{{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"
   with_items: pip_modules
 
+- name: installing wkhtml
+  unarchive: src=wkhtmltox.tar.xz dest=/opt
+  become: yes
+  become_method: sudo

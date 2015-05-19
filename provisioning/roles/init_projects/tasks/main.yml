@@ -1,0 +1,16 @@
+---
+
+- name: clone duck_eggs
+  git: "repo=https://github.com/fsx999/{{ item}}.git
+       dest={{ project_name }}/{{ item}}
+       update=no"
+  with_items: duck_module
+  notify:
+    - install duck_eggs
+
+- name: update duck_eggs
+  git: "repo=https://github.com/fsx999/{{ item}}.git
+       dest={{ project_name }}/{{ item}}"
+  with_items: duck_module
+  tags:
+    - update

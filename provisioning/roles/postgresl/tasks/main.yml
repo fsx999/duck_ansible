@@ -1,5 +1,20 @@
 ---
 # tasks file for postgresl
+
+- name: Setup base tools
+  apt: name={{ item }} state=present
+  become: yes
+  become_method: sudo
+  with_items:
+    - vim
+    - git
+    - mercurial
+    - postgresql
+    - libpq-dev
+    - unzip
+    - libaio1
+    - python-psycopg2
+
 - name: Copy valid pg_hba.conf
   template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
   become: yes
@@ -18,11 +33,11 @@
   become: yes
   become_user: postgres
   become_method: sudo
-  postgresql_db: name={{ postgres_database }} encoding='UTF-8'
+  postgresql_db: name={{ postgres.database }} encoding='UTF-8'
 
 
 - name: Posgres user
   become: yes
   become_user: postgres
   become_method: sudo
-  postgresql_user: name={{ postgres_user }} db={{ postgres_database }} password={{ postgres_password_crypt }} role_attr_flags=SUPERUSER
+  postgresql_user: name={{ postgres.user }} db={{ postgres.database }} password={{ postgres.password }} role_attr_flags=SUPERUSER

@@ -1,14 +1,34 @@
 ---
+oracle_client_version: "12.1.0.2.0"
 oracle_version: { majeur: "12", mineur: '1' }
 postgres_user: "vagrant"
-postgres_password: "vagrant"
-postgres_database: "test_vagrant"
-oracle_user: ""
-oracle_password: ""
-oracle_database: ""
-oracle_url: ""
+user: "vagrant"
+virtualenv_name: "env_duckins"
+project_name: "duckins"
+project_settings_path: 'duck_site/settings'
+
+postgres: {
+  user: "refprod",
+  host: "sql.iedparis8.net",
+  password: "", #password à changer
+  database: "duck_duck",
+  ip_dev: "192.168.33.11" }
+
+
 ansible_become_pass: "vagrant" # le pass sudo ici le pass de l'utilisateur vagrant pour vagrant
 oracle_client_local_oracle_zip_files_dir: "/opt"
-oracle_client_base: /opt
-user: "vagrant"
-virtualenv_name: "env_duckins"d
+
+duck_module:
+  - duck_utils
+  - duck_inscription
+  - duck_site
+  - django_apogee
+  - duck_examen
+  - duck_foad
+  - duck_paiement_etudiant
+  - gestion_info
+  - duck_salle
+  - duck_svi
+  - django-xadmin
+  - duck_theme_ied
+  - django-crispy-formsns"d

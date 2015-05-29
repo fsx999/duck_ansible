@@ -33,7 +33,12 @@
     ORACLE_HOME: "{{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"
   with_items: pip_modules
 
-- name: installing wkhtml
+- name: installing wkhtmltopdf
   unarchive: src=wkhtmltox.tar.xz dest=/opt
+  become: yes
+  become_method: sudo
+
+- name: link wkhtmltopdf
+  file: src=/opt/wkhtmltox/bin/wkhtmltopdf dest=/usr/local/bin/wkhtmltopdf state=link
   become: yes
   become_method: sudo

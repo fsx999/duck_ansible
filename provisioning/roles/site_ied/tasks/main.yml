@@ -1,0 +1,9 @@
+---
+# tasks file for site_ied
+- name: Install packages for site_ied
+  pip: name={{ item }} virtualenv={{ansible_env.HOME}}/{{ virtualenv_site.dir }}/{{ virtualenv_site.name }}
+  with_items: site_eggs
+#
+- name: install duck_eggs for site_ied
+  pip: name="{{ansible_env.HOME}}/{{ project.dir }}/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv_site.dir}}/{{ virtualenv_site.name }}"
+  with_items: duck_module

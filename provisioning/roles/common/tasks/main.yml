@@ -1,4 +1,9 @@
 ---
+- name: Update cache
+  apt: update_cache=yes
+  become: yes
+  become_method: sudo
+
 - name: Setup base tools
   apt: name={{ item }} state=present
   become: yes
@@ -27,7 +32,7 @@
 
 
 - name: install les paquets pip
-  pip: name={{ item }} virtualenv=/home/{{ user }}/{{ virtualenv.dir }}{{ virtualenv.name }}
+  pip: name={{ item }} virtualenv=/home/{{ user }}/{{ virtualenv.dir }}/{{ virtualenv.name }}
   environment:
     HOME: /home/{{ user }}
     ORACLE_HOME: "{{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"

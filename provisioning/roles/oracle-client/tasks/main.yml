@@ -33,7 +33,7 @@
   tags: install
 
 - name: link instant client
-  file: src={{ ls_oracle_home.stdout }}/{{ item.path }} dest={{ ls_oracle_home.stdout }}/{{ item.dest }} state=link
+  file: src="{{ ls_oracle_home.stdout }}/{{ item.path }}" dest="{{ ls_oracle_home.stdout }}/{{ item.dest }}" state=link
   become: yes
   become_method: sudo
   with_items:

@@ -1,0 +1,8 @@
+- hosts: all
+  roles:
+    - { role: "oracle-client" }
+    - { role: "common" }
+    - { role: "git_duck_eggs" }
+    - { role: "duck_module" }
+    - { role: "duck_settings_dev" }
+    - { role: "nginx" }

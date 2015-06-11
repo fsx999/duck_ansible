@@ -4,10 +4,3 @@
   template: "src=hosts.j2 dest=/etc/hosts"
   become: yes
   become_method: sudo
-
-
-#- name: setup ssh-key
-#  copy: "src={{ ssh_key }} dest=/home/{{ user }}/.ssh"
-#
-#- name: setup fabfile
-#  template: "src=fabfile.j2 dest={{ project_name }}/fabfile.py"

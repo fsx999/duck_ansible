@@ -27,7 +27,7 @@
 
 
 - name: install les paquets pip
-  pip: name={{ item }} virtualenv=/home/{{ user }}/{{ virtualenv_name }}
+  pip: name={{ item }} virtualenv=/home/{{ user }}/{{ virtualenv.dir }}{{ virtualenv.name }}
   environment:
     HOME: /home/{{ user }}
     ORACLE_HOME: "{{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"

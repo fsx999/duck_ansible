@@ -8,7 +8,6 @@ pip_modules:
   - django-registration-redux
   - django-floppyforms
   - django_xworkflows
-  - django-autocomplete-light
   - django-wkhtmltopdf
   - xhtml2pdf
   - django-mailrobot
@@ -36,3 +35,5 @@ pip_modules:
   - xlwt
   - Werkzeug
   - django_payzen
+  - virtualenvwrapper
+  - gunicorn

@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 provisioning/var.yml
+provisioning/var_prod.yml
 *instantclient-*
 
 ### VirtualEnv template

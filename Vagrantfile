@@ -17,11 +17,11 @@ Vagrant.configure(2) do |config|
     postgresql.vm.box = "ubuntu/trusty64"
     postgresql.vm.network "forwarded_port", guest: 5432, host: 5433
     postgresql.vm.network "private_network", ip: "192.168.33.11"
-    postgresql.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provisioning/postgresql.yml"
-      ansible.extra_vars = "provisioning/var.yml"
+#    postgresql.vm.provision "ansible" do |ansible|
+#      ansible.playbook = "provisioning/postgresql.yml"
+#      ansible.extra_vars = "provisioning/var.yml"
   #    ansible.skip_tags = 'update'
-    end
+#    end
    postgresql.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
      # Customize the amount of memory on the VM:
@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
     web.vm.network "private_network", ip: "192.168.33.10"
 #    web.vm.synced_folder "../../PycharmProjects", "/home/vagrant/PycharmProjects"
     web.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provisioning/playbook.yml"
+      ansible.playbook = "provisioning/web.yml"
       ansible.extra_vars = "provisioning/var.yml"
   #    ansible.skip_tags = 'update'
     end

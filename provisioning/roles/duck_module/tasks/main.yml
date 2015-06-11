@@ -1,5 +1,11 @@
 ---
 
 - name: install duck_eggs
-  pip: name="{{ansible_env.HOME}}/PycharmProjects/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv_name }}"
+  pip: name="{{ansible_env.HOME}}/{{ project.dir }}/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv.dir}}/{{ virtualenv.name }}"
   with_items: duck_module
+
+- name: mv autocomplete_light
+  copy: src=2.0.9.tar.gz dest="{{ansible_env.HOME}}/{{ virtualenv.dir}}/" directory_mode=yes
+
+- name: install autocomplet_light
+  pip: name='"file://{{ansible_env.HOME}}/{{ virtualenv.dir}}/2.0.9.tar.gz"' virtualenv="{{ansible_env.HOME}}/{{ virtualenv.dir}}/{{ virtualenv.name }}"

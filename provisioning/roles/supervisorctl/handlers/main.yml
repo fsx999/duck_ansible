@@ -1,2 +1,4 @@
 ---
-# handlers file for supervisorctl
+# handlers file for nginx
+- name: restart supervisord
+  service: name=supervisord state=restarted

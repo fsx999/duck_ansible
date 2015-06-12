@@ -1,2 +1,25 @@
 ---
 # tasks file for supervisorctl
+- name: install supervisord
+  pip: name=supervisor
+  become: yes
+  become_method: sudo
+
+- name: conf supervisord
+  command:
+
+- name: create supervisord conf
+  file: path=/etc/supervisord/conf.d state=directory
+  become: yes
+  become_method: sudo
+  ignore_errors: True
+
+- name: Create the configurations for sites
+  template: src=site.conf.j2 dest={{supervisord_conf_dir}}/{{ item }}.conf
+  with_items: sites.keys()
+  notify:
+    - restart supervisord
+  tags: [configuration,supervisord]
+  become: yes
+  become_method: sudo
+  ignore_errors: True

@@ -2,7 +2,7 @@
 # tasks file for postgresl
 
 - name: Setup base tools
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=present update_cache=yes
   become: yes
   become_method: sudo
   with_items:

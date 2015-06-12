@@ -1,5 +1,8 @@
 ---
 
+- name: create directory for the project
+  file: state=directory path={{ansible_env.HOME}}/{{ project.dir }}
+
 - name: install duck_eggs
   pip: name="{{ansible_env.HOME}}/{{ project.dir }}/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv.dir}}/{{ virtualenv.name }}"
   with_items: duck_module

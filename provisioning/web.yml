@@ -2,9 +2,11 @@
 - hosts: all
   remote_user: vagrant
   roles:
+#    
 #    - { role: "oracle-client" }
 #    - { role: "common" }
 #    - { role: "duck_module" }
 #    - { role: "duck_settings_dev" }
 #    - { role: "nginx" }
+#    - { role: "site_ied" }
     - { role: "supervisorctl" }

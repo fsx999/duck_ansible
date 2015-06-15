@@ -6,7 +6,16 @@
   become_method: sudo
 
 - name: conf supervisord
-  command:
+  command: echo_supervisord_conf > /etc/supervisord.conf
+  become: yes
+  become_method: sudo
+
+- name: init supervisord
+  template: src=init.conf.j2 dest=/etc/init.d/supervisord
+  become: yes
+  become_method: sudo
+
+- name:
 
 - name: create supervisord conf
   file: path=/etc/supervisord/conf.d state=directory

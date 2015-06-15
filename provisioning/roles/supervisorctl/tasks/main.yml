@@ -15,7 +15,6 @@
   become: yes
   become_method: sudo
 
-- name:
 
 - name: create supervisord conf
   file: path=/etc/supervisord/conf.d state=directory

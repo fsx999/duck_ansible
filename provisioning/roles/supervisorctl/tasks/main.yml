@@ -16,7 +16,7 @@
 
 
 - name: conf supervisord
-  template: src=supervisord.conf.j2 dest=/etc/supervisord.conf
+  template: src=supervisord.conf.j2 dest=/etc/supervisor/supervisord.conf
   become: yes
   become_method: sudo
 

@@ -23,3 +23,11 @@
   tags: [configuration,nginx]
   become: yes
   become_method: sudo
+
+- name: remove default site
+  file:  dest={{nginx_conf_dir}}/sites-enabled/default state=absent
+  notify:
+   - restart nginx
+  tags: [configuration,nginx]
+  become: yes
+  become_method: sudo

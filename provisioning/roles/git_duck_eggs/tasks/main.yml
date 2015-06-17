@@ -14,3 +14,4 @@
   with_items: duck_module
   tags:
     - update
+    - git

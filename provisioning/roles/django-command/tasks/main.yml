@@ -1,0 +1,8 @@
+---
+# tasks file for django-command
+- django_manage: >
+    "command=collectstatic"
+     "virtualenv={{ansible_env.HOME}}/{{sites[item].virtualenv_dir}}"
+     "settings={{sites[item].dir_config}}.{{sites[item].settings}}"
+     "app_path={{ansible_env.HOME}}/{{sites[item].dir}}/{{sites[item].dir_config}}"
+  with_items: sites.keys()

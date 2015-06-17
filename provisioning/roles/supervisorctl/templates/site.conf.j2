@@ -3,9 +3,9 @@
 command={{ansible_env.HOME}}/{{ virtualenv.dir}}/{{ virtualenv.name }}/bin/gunicorn -n {{ item }} -w 3 -t 30 -b
     unix:/tmp/{{ item }}.sock -p /tmp/{{ item }}.pid
     --log-level debug --error-logfile {{ansible_env.HOME}}/logs/{{ item }}/error_{{ item }}.log
-    --settings {{ project.dir_config }}.bo_settings {{ project.dir_config }}.bo_wsgi:application
-directory={{ansible_env.HOME}}/{{ project.dir }}/{{ project.dir_config }}
+    --settings {{ sites[item].dir_config }}.{{ sites[item].settings }} {{ sites[item].dir_config }}.{{ sites[item].wsgi }}:application
+directory={{ansible_env.HOME}}/{{ sites[item].dir }}/{{ sites[item].dir_config }}
 environment=PATH="{{ansible_env.HOME}}/{{ virtualenv.dir}}/{{ virtualenv.name }}/bin"
-user=ied-www
+user={{ user }}
 autostart=true
 autorestart=true

@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     postgresql.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/postgresql.yml"
       ansible.extra_vars = "provisioning/var.yml"
-  #    ansible.skip_tags = 'update'
+#      ansible.skip_tags = 'install'
     end
    postgresql.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
@@ -33,6 +33,8 @@ Vagrant.configure(2) do |config|
     web.vm.box = "ubuntu/trusty64"
     web.vm.box_check_update = true
     web.vm.network "forwarded_port", guest: 8081, host: 8081
+    web.vm.network "forwarded_port", guest: 443, host: 443
+    web.vm.network "forwarded_port", guest: 80, host: 8085
     web.vm.network "forwarded_port", guest: 8082, host: 8082
     web.vm.network "forwarded_port", guest: 8083, host: 8083
     web.vm.network "forwarded_port", guest: 8084, host: 8084

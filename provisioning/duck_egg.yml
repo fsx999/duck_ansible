@@ -1,0 +1,15 @@
+duck_module:
+  - duck_utils
+  - duck_inscription
+  - duck_site
+  - django_apogee
+  - duck_examen
+  - duck_foad
+  - duck_paiement_etudiant
+  - gestion_info
+  - duck_salle
+  - duck_svi
+  - django-xadmin
+  - duck_theme_ied
+  - django-crispy-forms
+  - duck_inscription_payzen

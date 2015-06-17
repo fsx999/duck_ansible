@@ -3,17 +3,25 @@ upstream {{ item }}_server {
     }
 
 server {
+{% if prod %}
     ssl_certificate  wildcard-ssl.crt;
     ssl_certificate_key  wildcard-ssl.key;
     listen 443;
-    server_name {{ nginx_sites[item].url }};
+{% else %}
+    listen 80;
+{% endif %}
 
+
+    server_name {{ sites[item].url }};
+{% if prod %}
     ssl  on;
     ssl_session_timeout  5m;
     ssl_protocols  SSLv3 TLSv1;
     ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
     ssl_prefer_server_ciphers   on;
-    {% for location in nginx_sites[item].locations|default({}) %}location {{ location.url }} {
+{% endif %}
+
+    {% for location in sites[item].locations|default({}) %}location {{ location.url }} {
         {% if location.autoindex|default(False) %}autoindex on;{% endif %}root {{ ansible_env.HOME }}/{{ location.dir }};
     }
     {% endfor %}
@@ -35,11 +43,14 @@ server {
         proxy_set_header   Host             $host;
         proxy_set_header   X-Real-IP        $remote_addr;
         proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+{% if prod %}
         proxy_set_header   X-Forwarded-Protocol "https";
         proxy_set_header X-Forwarded-Ssl on;
-        {{ nginx_sites[item].include|default('') }}
+{% endif %}
 
-        {% if nginx_sites[item].deny|default(False) %}deny all;{% else %}allow all;{% endif %}
+        {{ sites[item].include|default('') }}
+
+        {% if sites[item].deny|default(False) %}deny all;{% else %}allow all;{% endif %}
 
 
     }

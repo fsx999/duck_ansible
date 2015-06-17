@@ -2,3 +2,5 @@
 # handlers file for nginx
 - name: restart supervisord
   service: name=supervisord state=restarted
+  become: yes
+  become_method: sudo

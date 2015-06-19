@@ -1,6 +1,11 @@
 ---
 # handlers file for nginx
-- name: restart supervisord
-  service: name=supervisord state=restarted
+- name: stop supervisord
+  service: name=supervisord state=stopped
+  become: yes
+  become_method: sudo
+
+- name: start supervisord
+  service: name=supervisord state=started
   become: yes
   become_method: sudo

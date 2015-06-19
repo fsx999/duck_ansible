@@ -38,3 +38,4 @@ site_eggs:
   - django-extensions
   - django-wkhtmltopdf
   - xhtml2pdf
+  - gunicorn

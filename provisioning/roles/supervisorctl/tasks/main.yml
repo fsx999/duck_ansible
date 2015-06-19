@@ -44,7 +44,8 @@
   template: src=site.conf.j2 dest={{supervisord_conf_dir}}/{{ item }}.conf
   with_items: sites.keys()
   notify:
-    - restart supervisord
+    - stop supervisord
+    - start supervisord
   tags: [configuration,supervisord]
   become: yes
   become_method: sudo

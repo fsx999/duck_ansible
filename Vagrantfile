@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
       ansible.playbook = "provisioning/web.yml"
       ansible.extra_vars = "provisioning/var.yml"
       ansible.vault_password_file = "~/.vault_pass.txt"
-      ansible.tags="site_ied"
+#      ansible.tags="site_ied"
   #    ansible.skip_tags = 'update'
     end
      web.vm.provider "virtualbox" do |vb|

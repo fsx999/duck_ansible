@@ -33,3 +33,8 @@ site_eggs:
   - django_xworkflows
   - psycopg2
   - cx_oracle
+  - django-mptt
+  - django-mailrobot
+  - django-extensions
+  - django-wkhtmltopdf
+  - xhtml2pdf

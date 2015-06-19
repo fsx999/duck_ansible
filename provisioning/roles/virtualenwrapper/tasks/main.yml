@@ -1,0 +1,12 @@
+---
+# tasks file for virtualenwrapper
+- pip: name=virtualenvwrapper
+  tags: [installation, virtualenvwrapper]
+  become: yes
+  become_method: sudo
+
+- name: variable oracle
+  lineinfile: dest={{ansible_env.HOME}}/.bashrc line="{{ item }}"
+  with_items:
+    - "export WORKON_HOME=$HOME/{{ virtualenv.dir }}"
+    - source /usr/local/bin/virtualenvwrapper.sh

@@ -1,0 +1,48 @@
+# coding=utf-8
+EMAIL_HOST = '10.10.1.27'
+DEFAULT_FROM_EMAIL = "nepasrepondre@iedparis8.net"
+ADMINS = (
+	('IED inscription ', 'inscription@iedparis8.net'), 
+	)
+ALLOWED_HOSTS =['backoffice.iedparis8.net']
+DEBUG = False
+TEMPLATE_DEBUG = False
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'duck_duck',                      # Or path to database file if using sqlite3.
+        'USER': 'refprod',                      # Not used with sqlite3.
+        'PASSWORD': 'A_deI2011B!',                  # Not used with sqlite3.
+        'HOST': 'sql.iedparis8.net',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+
+    },
+    'duck_bo_etu': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'duck_bo_etu',                      # Or path to database file if using sqlite3.
+        'USER': 'refprod',                      # Not used with sqlite3.
+        'PASSWORD': 'A_deI2011B!',                  # Not used with sqlite3.
+        'HOST': 'sql.iedparis8.net',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+
+    },
+    'oracle': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'apoprod',
+        'USER': 'WEBIED',
+        'PASSWORD': 'WEBIED',
+        'HOST': 'apoprod',
+        'PORT': '1521',
+    },
+
+}
+COMPOSANTE = '034'
+INSCRIPTION_URL = 'https://preins.iedparis8.net'
+EMAIL_DEVELOPPEMENT = 'paul.guichon@iedparis8.net'
+EMAIL_DEV = EMAIL_DEVELOPPEMENT
+VADS_SITE_ID = '58163425'
+VADS_CERTIFICATE = '7260512151430340'
+VADS_CTX_MODE = 'TEST'
+VADS_ACTION_MODE = 'INTERACTIVE'
+VADS_CURRENCY = '978'
+DOMAINE_PAYZEN_RESPONSE = 'http://193.54.179.99:8081'

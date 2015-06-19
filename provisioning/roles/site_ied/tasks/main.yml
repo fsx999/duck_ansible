@@ -7,3 +7,10 @@
 - name: install duck_eggs for site_ied
   pip: name="{{ansible_env.HOME}}/{{ project.dir }}/{{ item}}/" extra_args="-e" virtualenv="{{ansible_env.HOME}}/{{ virtualenv_site.dir}}/{{ virtualenv_site.name }}"
   with_items: duck_module
+
+- django_manage: >
+    "command=migrate"
+     "virtualenv={{ansible_env.HOME}}/{{ virtualenv_site.dir}}/{{ virtualenv_site.name }}"
+     "settings=site_ied.settings"
+     "app_path={{ansible_env.HOME}}/PycharmProjects/site_ied"
+  with_items: sites.keys()

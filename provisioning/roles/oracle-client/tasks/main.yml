@@ -43,7 +43,7 @@
 
 
 - name: variable oracle
-  lineinfile: dest=/home/{{user}}/.bashrc line="{{ item }}"
+  lineinfile: dest={{ansible_env.HOME}}/.bashrc line="{{ item }}"
   with_items:
     - "export ORACLE_HOME={{ oracle_client_base }}/instantclient_{{ oracle_version.majeur }}_{{ oracle_version.mineur }}"
     - "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME"

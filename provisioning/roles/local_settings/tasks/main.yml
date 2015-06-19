@@ -1,0 +1,6 @@
+---
+# tasks file for local_settings
+
+- template: src=local_settings.py.j2 dest={{ansible_env.HOME}}/{{sites[item].dir}}/{{sites[item].dir_config}}/{{sites[item].dir_config}}/{{sites[item].local_settings}}.py
+  with_items: sites.keys()
+

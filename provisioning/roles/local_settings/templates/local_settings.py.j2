@@ -1,0 +1,31 @@
+import re
+EMAIL_HOST = '{{ sites[item].email_host }}'
+SERVER_EMAIL = 'inscription@iedparis8.net'
+DEFAULT_FROM_EMAIL = "nepasrepondre@iedparis8.net"
+ADMINS = (
+		('IED inscription ', 'inscription@iedparis8.net'),
+		)
+
+ALLOWED_HOSTS = ['{{ sites[item].url }}']
+DEBUG = False
+TEMPLATE_DEBUG = False
+DATABASES = {
+{% for database in sites[item].databases %}
+    '{{ database }}': {
+            'ENGINE': '{{ sites[item].databases[database].engine }}',
+            'NAME': '{{ sites[item].databases[database].name }}',
+            'USER': '{{ sites[item].databases[database].user }}',
+            'PASSWORD': '{{ sites[item].databases[database].password }}',
+            'HOST': '{{ sites[item].databases[database].host }}',
+            'PORT': '{{ sites[item].databases[database].port|default('') }}',
+
+    },
+{% endfor %}
+}
+COMPOSANTE = '{{ COMPOSANTE }}'
+VADS_SITE_ID = '{{ VADS_SITE_ID }}'
+VADS_CERTIFICATE = '{{ VADS_CERTIFICATE }}'
+VADS_CTX_MODE = '{{ VADS_CTX_MODE }}'
+VADS_ACTION_MODE = '{{ VADS_ACTION_MODE }}'
+VADS_CURRENCY = '{{ VADS_CURRENCY }}'
+DOMAINE_PAYZEN_RESPONSE = '{{ DOMAINE_PAYZEN_RESPONSE }}'

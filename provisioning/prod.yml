@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-
+#
 #    - { role: "oracle-client", tags: ['oracle', 'install']}
 #    - { role: "common", tags: ['install'] }
 #    - { role: "git_duck_eggs" }
@@ -8,7 +8,8 @@
 #    - { role: "duck_settings_dev", tags: ['dev', 'install']}
 #    - { role: "nginx", tags: ['install', 'prod', 'dev'] }
 #    - { role: "site_ied" }
-    - { role: "supervisorctl", tags: ['install', 'update'] }
-#    - { role: "local_settings", tags: ['install', 'update']}
+#    - { role: "supervisorctl", tags: ['install', 'update'] }
+    - { role: "local_settings", tags: ['install', 'update']}
 #    - { role: "django-command", tags: ['install', 'update']}
 #    - { role: "virtualenwrapper"}
+    - { role: "sentry"}

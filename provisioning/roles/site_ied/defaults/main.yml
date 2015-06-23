@@ -39,3 +39,4 @@ site_eggs:
   - django-wkhtmltopdf
   - xhtml2pdf
   - gunicorn
+  - raven

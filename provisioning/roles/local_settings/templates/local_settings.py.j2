@@ -1,4 +1,7 @@
 import re
+import raven
+import os
+
 EMAIL_HOST = '{{ sites[item].email_host }}'
 SERVER_EMAIL = 'inscription@iedparis8.net'
 DEFAULT_FROM_EMAIL = "nepasrepondre@iedparis8.net"
@@ -29,3 +32,8 @@ VADS_CTX_MODE = '{{ VADS_CTX_MODE }}'
 VADS_ACTION_MODE = '{{ VADS_ACTION_MODE }}'
 VADS_CURRENCY = '{{ VADS_CURRENCY }}'
 DOMAINE_PAYZEN_RESPONSE = '{{ DOMAINE_PAYZEN_RESPONSE }}'
+
+
+RAVEN_CONFIG = {
+    'dsn': '{{ raven_url }}',
+}

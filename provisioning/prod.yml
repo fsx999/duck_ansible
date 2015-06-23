@@ -1,15 +1,15 @@
 - hosts: all
   roles:
 #
-#    - { role: "oracle-client", tags: ['oracle', 'install']}
-#    - { role: "common", tags: ['install'] }
+    - { role: "oracle-client", tags: ['oracle', 'install']}
+    - { role: "common", tags: ['common', 'install'] }
     - { role: "git_duck_eggs" }
-#    - { role: "duck_module", tags: ['install'] }
-#    - { role: "duck_settings_dev", tags: ['dev', 'install']}
-#    - { role: "nginx", tags: ['install', 'prod', 'dev'] }
-#    - { role: "site_ied" }
-#    - { role: "supervisorctl", tags: ['install', 'update'] }
-#    - { role: "local_settings", tags: ['install', 'update']}
-#    - { role: "django-command", tags: ['install', 'update']}
-#    - { role: "virtualenwrapper"}
-#    - { role: "sentry"}
+    - { role: "duck_module", tags: ['install'] }
+    - { role: "duck_settings_dev", tags: ['dev', 'install']}
+    - { role: "nginx", tags: ['install', 'nginx', 'dev'] }
+    - { role: "site_ied", tags: ['site_ied']}
+    - { role: "supervisorctl", tags: ['install', 'supervisorctl'] }
+    - { role: "local_settings", tags: ['install', 'local_settings']}
+    - { role: "django-command", tags: ['install', 'command']}
+    - { role: "virtualenwrapper", tags: ['virtualenvwrapper']}
+    - { role: "sentry", tags:['sentry']}

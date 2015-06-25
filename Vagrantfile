@@ -17,12 +17,12 @@ Vagrant.configure(2) do |config|
     postgresql.vm.box = "ubuntu/trusty64"
     postgresql.vm.network "forwarded_port", guest: 5432, host: 5433
     postgresql.vm.network "private_network", ip: "192.168.33.11"
-#    postgresql.vm.provision "ansible" do |ansible|
-#      ansible.playbook = "provisioning/postgresql.yml"
-#      ansible.extra_vars = "provisioning/var.yml"
-#      ansible.vault_password_file = "~/.vault_pass.txt"
-#      ansible.skip_tags = 'install'
-#    end
+    postgresql.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provisioning/postgresql.yml"
+      ansible.extra_vars = "provisioning/var.yml"
+      ansible.vault_password_file = "~/.vault_pass.txt"
+     # ansible.skip_tags = 'install'
+    end
    postgresql.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
      # Customize the amount of memory on the VM:

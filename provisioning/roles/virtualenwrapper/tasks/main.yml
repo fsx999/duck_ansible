@@ -10,3 +10,4 @@
   with_items:
     - "export WORKON_HOME=$HOME/{{ virtualenv.dir }}"
     - source /usr/local/bin/virtualenvwrapper.sh
+

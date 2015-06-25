@@ -1,0 +1,5 @@
+---
+# tasks file for copy_project
+- name: install duck_eggs
+  synchronize: src="{{ lookup('env','HOME') }}/{{ project.dir }}/{{ item}}/"  dest="{{ansible_env.HOME}}/{{ project.dir }}/{{ item}}/" recursive=yes
+  with_items: duck_module

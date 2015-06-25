@@ -23,6 +23,9 @@
     - libjpeg8-dev
     - zlib1g-dev
     - libfreetype6-dev
+    - fontconfig
+    - libxml2-dev
+    - libxslt1-dev
 
 - name: install pip
   easy_install: name=pip
@@ -51,3 +54,17 @@
   file: src=/opt/wkhtmltox/bin/wkhtmltopdf dest=/usr/local/bin/wkhtmltopdf state=link
   become: yes
   become_method: sudo
+
+- name: copy font
+  command: "cp {{ansible_env.HOME}}/{{ project.dir }}/duck_inscription/static/font/ConnectCode39.ttf /usr/share/fonts"
+  become: yes
+  become_method: sudo
+  tags:
+    - font
+
+- name: active font
+  command: fc-cache -f -v
+  become: yes
+  become_method: sudo
+  tags:
+    - font

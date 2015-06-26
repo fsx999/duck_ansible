@@ -13,11 +13,10 @@
      "virtualenv={{ansible_env.HOME}}/{{ virtualenv_site.dir}}/{{ virtualenv_site.name }}"
      "settings=site_ied.settings"
      "app_path={{ansible_env.HOME}}/PycharmProjects/site_ied"
-  with_items: sites.keys()
+
 
 - django_manage: >
     "command=collectstatic"
      "virtualenv={{ansible_env.HOME}}/{{ virtualenv_site.dir}}/{{ virtualenv_site.name }}"
      "settings=site_ied.settings"
      "app_path={{ansible_env.HOME}}/PycharmProjects/site_ied"
-  with_items: sites.keys()

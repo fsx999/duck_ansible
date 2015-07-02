@@ -38,3 +38,4 @@ pip_modules:
   - virtualenvwrapper
   - gunicorn
   - raven
+  - git+https://github.com/django-wiki/django-wiki.git#egg=wiki

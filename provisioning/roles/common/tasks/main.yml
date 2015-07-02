@@ -56,7 +56,7 @@
   become_method: sudo
 
 - name: copy font
-  command: "cp {{ansible_env.HOME}}/{{ project.dir }}/duck_inscription/static/font/ConnectCode39.ttf /usr/share/fonts"
+  command: "cp {{ansible_env.HOME}}/{{ project.dir }}/duck_inscription/duck_inscription/static/font/ConnectCode39.ttf /usr/share/fonts"
   become: yes
   become_method: sudo
   tags:

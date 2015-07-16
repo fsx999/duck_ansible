@@ -3,7 +3,7 @@
   remote_user: vagrant
 
   roles:
-#    
+    - { role: "git_duck_eggs" }
     - { role: "oracle-client", tags: ['oracle', 'install']}
     - { role: "copy_project" }
     - { role: "common", tags: ['install'] }

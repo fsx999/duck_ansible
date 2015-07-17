@@ -1,3 +1,6 @@
 [prod]
 195.154.201.13
-
+[local]
+localhost
+[postgres]
+192.168.33.11

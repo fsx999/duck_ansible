@@ -3,3 +3,4 @@
   remote_user: vagrant
   roles:
     - { role: "postgresl", tags: ['install']}
+    - { role: "backup_db", tags: ['backup_db']}

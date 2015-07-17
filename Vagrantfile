@@ -21,7 +21,8 @@ Vagrant.configure(2) do |config|
       ansible.playbook = "provisioning/postgresql.yml"
       ansible.extra_vars = "provisioning/var.yml"
       ansible.vault_password_file = "~/.vault_pass.txt"
-     # ansible.skip_tags = 'install'
+#      ansible.skip_tags = 'install'
+      ansible.tags = 'backup_dbvi'
     end
    postgresql.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine

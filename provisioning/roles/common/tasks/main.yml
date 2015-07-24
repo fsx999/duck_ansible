@@ -26,6 +26,7 @@
     - fontconfig
     - libxml2-dev
     - libxslt1-dev
+    - gettext
 
 - name: install pip
   easy_install: name=pip

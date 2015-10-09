@@ -13,3 +13,4 @@ duck_module:
   - duck_theme_ied
   - django-crispy-forms
   - duck_inscription_payzen
+  - duck_recruitment
